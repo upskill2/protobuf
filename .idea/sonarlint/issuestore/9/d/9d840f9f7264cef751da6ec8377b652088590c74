@@ -1,0 +1,13 @@
+
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÕîàÈÏ1
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÖîàÈÏ1
+g	java:S112+"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÖîàÈÏ1
+g	java:S1124"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÖîàÈÏ1
+g	java:S1126"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÖîàÈÏ1
+a
+java:S2147"DCombine this catch with the one at line 25, which has the same body.(ï­£Ä8ïîàÈÏ1
+I
+java:S1481)",Remove this unused "person1" local variable.(½‚€Ö8ğîàÈÏ1
+a
+java:S21475"DCombine this catch with the one at line 51, which has the same body.(ï­£Ä8ñîàÈÏ1
+G	java:S106H"+Replace this use of System.out by a logger.(–àÊ±8óîàÈÏ1

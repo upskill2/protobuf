@@ -1,0 +1,9 @@
+
+g	java:S1127"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ8µΓ‰Ρ1
+Y
+java:S2629+"7Use the built-in formatting to construct this argument.(¦ϋτ©ώÿÿÿÿ8¶Γ‰Ρ1
+m	java:S116"QRename this field "LOGGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(£ό΄8ΙΓ‰Ρ1
+m
+java:S3457+"KFormat specifiers or lambda should be used instead of string concatenation.(¦ϋτ©ώÿÿÿÿ8ÒΓ‰Ρ1
+{
+java:S21426"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(δ Ή€8ΥΓ‰Ρ1
