@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.grpc.models";
+
+message RollRequest {
+  bool randomDice = 1;
+  int32 clientDice = 2;
+}
+
+message RollResponse {
+  int32 clientPosition = 1;
+  int32 serverPosition = 2;
+  int32 moveCount = 3;
+  Winner winner = 4;
+  Status status = 5;
+  MoveType clientLastMoveType = 6;
+  MoveType serverLastMoveType = 7;
+}
+
+message NewMove{
+  int32 newPosition = 1;
+  MoveType moveType = 2;
+}
+
+enum MoveType {
+  NORMAL = 0;
+  SNAKE = 1;
+  LADDER = 2;
+}
+
+enum Winner {
+  NONE = 0;
+  SERVER = 1;
+  CLIENT = 2;
+}
+
+enum Status {
+  PLAYING = 0;
+  GAME_OVER = 1;
+}
+
+service GameService {
+  rpc roll(stream RollRequest) returns (stream RollResponse);
+}

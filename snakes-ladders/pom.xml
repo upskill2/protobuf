@@ -8,51 +8,41 @@
     </parent>
 
     <groupId>org.example</groupId>
-    <artifactId>proto-intro</artifactId>
+    <artifactId>snakes-ladders</artifactId>
     <packaging>jar</packaging>
 
-    <name>proto-intro</name>
-    <url>http://maven.apache.org</url>
-
-    <properties>
-        <grpc.java.version>1.59.0</grpc.java.version>
-        <tomcat.annotations.version>6.0.53</tomcat.annotations.version>
-        <jackson.databind.version>2.14.2</jackson.databind.version>
-        <os.maven.plugin.version>1.7.1</os.maven.plugin.version>
-        <junit.version>5.9.0</junit.version>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-netty-shaded</artifactId>
-            <version>${grpc.java.version}</version>
         </dependency>
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-protobuf</artifactId>
-            <version>${grpc.java.version}</version>
         </dependency>
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
-            <version>${grpc.java.version}</version>
         </dependency>
         <dependency> <!-- necessary for Java 9+ -->
             <groupId>org.apache.tomcat</groupId>
             <artifactId>annotations-api</artifactId>
-            <version>${tomcat.annotations.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.databind.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.28</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -101,6 +91,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>

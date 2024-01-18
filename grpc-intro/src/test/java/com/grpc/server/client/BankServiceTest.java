@@ -58,8 +58,6 @@ class BankServiceTest {
     @Test
     void balanceTest () {
 
-
-
         BalanceCheckRequest balanceCheckRequest = BalanceCheckRequest.newBuilder ()
                 .setAccountNumber (7)
                 .build ();
