@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.example</groupId>
-  <artifactId>grpc-intro</artifactId>
+  <artifactId>grpc-bank-service</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
@@ -14,6 +14,7 @@
     <jackson.databind.version>2.14.2</jackson.databind.version>
     <os.maven.plugin.version>1.7.1</os.maven.plugin.version>
     <junit.version>5.9.0</junit.version>
+    <java.version>17</java.version>
   </properties>
   <dependencies>
     <dependency>

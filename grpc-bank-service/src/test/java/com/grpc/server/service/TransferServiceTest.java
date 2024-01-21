@@ -21,7 +21,7 @@ class TransferServiceTest {
     @BeforeAll
     void setup () {
         final ManagedChannel managedChannel = ManagedChannelBuilder
-                .forAddress ("localhost", 6565)
+                .forAddress ("localhost", 8585)
                 .usePlaintext ()
                 .build ();
         transferServiceStub = TransferServiceGrpc.newStub (managedChannel);
