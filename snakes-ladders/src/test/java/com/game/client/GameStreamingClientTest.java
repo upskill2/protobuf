@@ -28,24 +28,18 @@ class GameStreamingClientTest {
     @Test
     void gameTest () throws InterruptedException {
         CountDownLatch latch = new CountDownLatch (1);
+
         GameStreamingClient client = new GameStreamingClient (latch);
         StreamObserver<RollRequest> startGame = stub.roll (client);
+        client.setRollRequestStreamObserver (startGame);
 
-        for (int i = 0; i < 30; i++) {
+        final RollRequest request = RollRequest.newBuilder ()
+                .setRandomDice (true)
+                .setClientDice (0)
+                .build ();
 
-            final RollRequest request = RollRequest.newBuilder ()
-                    .setRandomDice (true)
-                    .setClientDice (0)
-                    .build ();
-
-            startGame.onNext (request);
-
-        }
-
+        client.roll (request);
         latch.await ();
-        startGame.onCompleted ();
-
-
     }
 
 }

@@ -139,10 +139,6 @@ public class GameStreamingRequest implements StreamObserver<RollRequest> {
 
     @Override
     public void onCompleted () {
-        onNext (RollRequest.newBuilder ()
-                .setClientDice (0)
-                .setRandomDice (false)
-                .build ());
         rollResponseStreamObserver.onCompleted ();
     }
 }

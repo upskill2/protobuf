@@ -1,5 +1,6 @@
 package com.game.client;
 
+import com.grpc.models.RollRequest;
 import com.grpc.models.RollResponse;
 import com.grpc.models.Status;
 import io.grpc.stub.StreamObserver;
@@ -13,9 +14,14 @@ public class GameStreamingClient implements StreamObserver<RollResponse> {
     Logger logger = Logger.getLogger (GameStreamingClient.class.getName ());
 
     private final CountDownLatch latch;
+    private StreamObserver<RollRequest> rollRequestStreamObserver;
 
     public GameStreamingClient (CountDownLatch latch) {
         this.latch = latch;
+    }
+
+    public void roll (RollRequest request) {
+        this.rollRequestStreamObserver.onNext (request);
     }
 
     @Override
@@ -38,9 +44,25 @@ public class GameStreamingClient implements StreamObserver<RollResponse> {
         logger.info ("------------------");
 
         if (status == Status.GAME_OVER) {
-            onCompleted ();
+            logger.info ("Game over");
+           rollRequestStreamObserver.onCompleted ();
+        } else {
+            this.rollAgain ();
         }
 
+    }
+
+    private void rollAgain () {
+
+        RollRequest rollRequest = RollRequest.newBuilder ()
+                .setClientDice (0)
+                .setRandomDice (false)
+                .build ();
+        this.rollRequestStreamObserver.onNext (rollRequest);
+    }
+
+    public void setRollRequestStreamObserver (final StreamObserver<RollRequest> rollRequestStreamObserver) {
+        this.rollRequestStreamObserver = rollRequestStreamObserver;
     }
 
     @Override
