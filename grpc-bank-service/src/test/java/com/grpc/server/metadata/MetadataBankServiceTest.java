@@ -98,7 +98,7 @@ class MetadataBankServiceTest {
                 .build ();
 
         bankServiceBlockingStub.withdraw (withdrawRequest).forEachRemaining (withdrawResponse -> {
-            assertEquals (10, withdrawResponse.getWithdrawnAmount ());
+            assertEquals (1000, withdrawResponse.getWithdrawnAmount ());
         });
     }
 

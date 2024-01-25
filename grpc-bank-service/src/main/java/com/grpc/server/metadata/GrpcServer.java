@@ -8,7 +8,7 @@ public class GrpcServer {
         try {
             ServerBuilder.forPort (6565)
                     .addService (new TokenBankService ())
-                    .intercept (new AuthInterceptor ())
+           //         .intercept (new AuthInterceptor ())
                     .build ()
                     .start ()
                     .awaitTermination ();

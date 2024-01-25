@@ -10,6 +10,7 @@
         <module>grpc-bank-service</module>
         <module>proto-intro</module>
         <module>snakes-ladders</module>
+        <module>grpc-spring-boot</module>
     </modules>
     <properties>
         <grpc.java.version>1.59.0</grpc.java.version>

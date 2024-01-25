@@ -5,7 +5,9 @@ import com.grpc.models.*;
 import com.grpc.server.client.CashStreamingRequest;
 import com.grpc.server.repository.AccountDatabase;
 import io.grpc.Context;
+import io.grpc.Metadata;
 import io.grpc.Status;
+import io.grpc.protobuf.ProtoUtils;
 import io.grpc.stub.StreamObserver;
 
 import java.util.logging.Level;
@@ -45,6 +47,14 @@ public class TokenBankService extends BankServiceGrpc.BankServiceImplBase {
 
 
         if (balance < amount) {
+            Metadata metadata = new Metadata ();
+            Metadata.Key<WithdrawError> key = ProtoUtils.keyForProto (WithdrawError.getDefaultInstance ());
+            WithdrawError error = WithdrawError.newBuilder ()
+                      .setAmount (amount)
+                    .setErrorCode (ErrorCode.INSUFFICIENT_FUNDS)
+                    .build ();
+
+            metadata.put (key, error);
 
             LOGGER.log (Level.ALL, balance + "to withdraw: " + amount);
             responseObserver.onError (Status.FAILED_PRECONDITION.

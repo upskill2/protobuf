@@ -3,6 +3,8 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/grpc-bank-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/grpc-bank-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grpc-spring-boot/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grpc-spring-boot/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/proto-into/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/proto-into/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/proto-intro/src/main/java" charset="UTF-8" />
