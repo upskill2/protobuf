@@ -1,8 +1,0 @@
-
-r	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯šÌŞıÿÿÿÿ8Ü¸º‘Ñ1
-m	java:S117,"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÓªÏ¬8Ÿ‡¾‘Ñ1
-F
-java:S2629A"$Invoke method(s) only conditionally.(€›ßÈüÿÿÿÿ8ãö“Ñ1
-]	java:S125&"<This block of commented-out lines of code should be removed.(«šè°úÿÿÿÿ8ÓØ’“Ñ1
-H
-java:S1128"+Remove this unused import 'io.grpc.Status'.(êšúî8×Ø’“Ñ1

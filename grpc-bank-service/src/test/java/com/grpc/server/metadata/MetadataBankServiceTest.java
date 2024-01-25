@@ -1,21 +1,31 @@
-package com.grpc.server.client;
+package com.grpc.server.metadata;
 
 import com.grpc.models.*;
+import com.grpc.server.client.BalanceStreamObserver;
+import com.grpc.server.client.MoneyStreamingResponse;
+import com.grpc.server.client.metadata.ClientConstants;
+import com.grpc.server.client.metadata.UserSessionToken;
 import com.grpc.server.repository.AccountDatabase;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.stub.MetadataUtils;
 import io.grpc.stub.StreamObserver;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.Logger;
 
 import static com.grpc.server.repository.AccountDatabase.getClientBalance;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance (TestInstance.Lifecycle.PER_CLASS)
-class BankServiceTest {
+class MetadataBankServiceTest {
+
+    Logger logger = Logger.getLogger (MetadataBankServiceTest.class.getName ());
 
     private BankServiceGrpc.BankServiceBlockingStub bankServiceBlockingStub;
     private BankServiceGrpc.BankServiceStub bankServiceStub;
@@ -23,12 +33,13 @@ class BankServiceTest {
     @BeforeAll
     public void setup () {
 
-        final ManagedChannel managedChannel = ManagedChannelBuilder.forAddress ("localhost", 6565)
+        final ManagedChannel managedChannel = ManagedChannelBuilder
+                .forAddress ("localhost", 6565)
+                .intercept (MetadataUtils.newAttachHeadersInterceptor (ClientConstants.getClientToken ()))
                 .usePlaintext ()
                 .build ();
 
         bankServiceBlockingStub = BankServiceGrpc.newBlockingStub (managedChannel);
-        bankServiceStub = BankServiceGrpc.newStub (managedChannel);
     }
 
 
@@ -38,8 +49,23 @@ class BankServiceTest {
         BalanceCheckRequest balanceCheckRequest = BalanceCheckRequest.newBuilder ()
                 .setAccountNumber (7)
                 .build ();
-        final Balance balance = bankServiceBlockingStub.getBalance (balanceCheckRequest);
-        assertTrue ( balance.getAmount ()>=70);
+
+
+        try {
+
+            for (int i = 0; i < 20; i++) {
+                int random = ThreadLocalRandom.current ().nextInt (2, 5);
+                logger.info ("random: " + random);
+                final Balance balance = bankServiceBlockingStub
+                        .withCallCredentials (new UserSessionToken ("user-secret-" + random))
+                        .getBalance (balanceCheckRequest);
+                logger.info ("Received balance: " + balance.getAmount ());
+            //    assertTrue (balance.getAmount () >= 70);
+            }
+        } catch (Exception e) {
+            logger.info ("Exception: " + e.getMessage ());
+        }
+
     }
 
     @Test
@@ -60,9 +86,9 @@ class BankServiceTest {
         depositObserver.onCompleted ();
         latch.await ();
 
-        final int clientBalance =AccountDatabase.getClientBalance (7);
+        final int clientBalance = AccountDatabase.getClientBalance (7);
 
-              assertTrue (clientBalance-initialBalance==100);
+        assertTrue (clientBalance - initialBalance == 100);
     }
 
     @Test

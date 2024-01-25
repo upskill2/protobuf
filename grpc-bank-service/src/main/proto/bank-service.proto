@@ -11,6 +11,16 @@ message Balance {
   int32 amount = 1;
 }
 
+enum ErrorCode {
+  INSUFFICIENT_FUNDS = 1;
+  INVALID_ACCOUNT = 2;
+}
+
+message WithdrawError {
+  ErrorCode error_code = 1;
+  int32 amount = 2;
+}
+
 service BankService {
   rpc getBalance(BalanceCheckRequest) returns (Balance);
   rpc withdraw(WithdrawRequest) returns (stream WithdrawResponse);
