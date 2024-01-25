@@ -1,4 +1,4 @@
-package com.grpc.server.client.metadata;
+package com.grpc.server.metadata;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 import com.grpc.models.*;
@@ -11,7 +11,7 @@ import io.grpc.stub.StreamObserver;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static com.grpc.server.client.metadata.AuthInterceptor.UserRole.PRIME;
+import static com.grpc.server.metadata.AuthInterceptor.UserRole.PRIME;
 import static com.grpc.server.repository.AccountDatabase.getClientBalance;
 
 public class TokenBankService extends BankServiceGrpc.BankServiceImplBase {

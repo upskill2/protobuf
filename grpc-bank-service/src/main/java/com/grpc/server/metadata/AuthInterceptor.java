@@ -1,4 +1,4 @@
-package com.grpc.server.client.metadata;
+package com.grpc.server.metadata;
 
 import io.grpc.*;
 

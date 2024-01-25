@@ -12,8 +12,8 @@ message Balance {
 }
 
 enum ErrorCode {
-  INSUFFICIENT_FUNDS = 1;
-  INVALID_ACCOUNT = 2;
+  INSUFFICIENT_FUNDS = 0;
+  INVALID_ACCOUNT = 1;
 }
 
 message WithdrawError {

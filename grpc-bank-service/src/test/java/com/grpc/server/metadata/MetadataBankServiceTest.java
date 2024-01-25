@@ -3,8 +3,6 @@ package com.grpc.server.metadata;
 import com.grpc.models.*;
 import com.grpc.server.client.BalanceStreamObserver;
 import com.grpc.server.client.MoneyStreamingResponse;
-import com.grpc.server.client.metadata.ClientConstants;
-import com.grpc.server.client.metadata.UserSessionToken;
 import com.grpc.server.repository.AccountDatabase;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;

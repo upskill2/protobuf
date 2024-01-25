@@ -1,8 +1,7 @@
-package com.grpc.server.client.metadata;
+package com.grpc.server.metadata;
 
 import io.grpc.CallCredentials;
 import io.grpc.Metadata;
-import io.grpc.Status;
 
 import java.util.concurrent.Executor;
 import java.util.logging.Logger;
